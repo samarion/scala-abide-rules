@@ -19,14 +19,13 @@ object RulesBuild extends Build {
     resourceDirectory in Compile  <<= (baseDirectory in Compile)(_ / "resources"),
     publishArtifact in Test        := false,
     libraryDependencies          <++= (scalaVersion)(scalaVersion => Seq(
-      "com.typesafe" %% "abide" % "0.1-SNAPSHOT",
+      "com.typesafe" %% "abide" % "0.1-SNAPSHOT" % "provided",
       "org.scala-lang" % "scala-compiler" % scalaVersion % "provided",
       "org.scala-lang" % "scala-reflect" % scalaVersion % "provided"
     ))
   )
 
-  lazy val samples = Project("abide-samples", file("samples"))
-    .settings(sharedSettings : _*)
+  lazy val samples = Project("abide-samples", file("samples")).settings(sharedSettings : _*)
 
   lazy val rules = Seq(samples)
 

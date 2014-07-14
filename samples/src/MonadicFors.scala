@@ -26,8 +26,8 @@ class MonadicFors(val context : Context) extends WarningRule {
   }
 
   val step = optimize {
-    case t @ q"for (..$enums) yield $body" => println("fory="+t.getClass); check(enums)
-    case t @ q"for (..$enums) $body"       => println("for="+t.getClass); check(enums)
+    case t @ q"for (..$enums) yield $body" => check(enums)
+    case t @ q"for (..$enums) $body"       => check(enums)
   }
 }
 

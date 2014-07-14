@@ -15,6 +15,6 @@ trait AnalysisTest extends FlatSpec with Matchers with TreeProvider {
 
   def apply(rule : Traversal with TraversalRule)(tree : global.Tree) : List[rule.Warning] = {
     rule.traverse(tree.asInstanceOf[rule.universe.Tree])
-    rule.state.warnings
+    rule.result.warnings
   }
 }
